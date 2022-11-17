@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://fjsts.github.io/web-gatsby/sitemap-index.xml
+Host: https://fjsts.github.io
