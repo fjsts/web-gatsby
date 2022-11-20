@@ -8,10 +8,11 @@ export default function Post({ pageContext }) {
 
     return (
         <Layout>
-            <div className="post-header">
-                <h1>{title}</h1>
-            </div>
-            <div dangerouslySetInnerHTML={{ __html: body }} className="post-body" />
+            {/* <SEO title={title} description={description} /> */}
+            
+            <h2>{title} aaaa</h2>
+            
+            <div dangerouslySetInnerHTML={{ __html: body }} />
         </Layout>
     )
 }

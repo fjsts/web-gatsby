@@ -8,7 +8,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             allPageInfoJson {
                 edges {
                     node {
-                        id
+                        race_id
                         title
                         body
                     }
@@ -27,7 +27,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     edges.forEach(edge => {
         createPage({
-            path: `/post/${edge.node.id}/`,
+            path: `/past_forecasts/${edge.node.race_id}/`,
             component: path.resolve("./src/templates/post.js"),
             context: { post: edge.node }
         })

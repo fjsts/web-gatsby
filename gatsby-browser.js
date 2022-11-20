@@ -1,3 +1,3 @@
-// グローバルなスタイリング
-// import "./src/styles/global-style.css"
+import "./src/styles/global.css"
+import "./src/styles/style.css"
 

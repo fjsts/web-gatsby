@@ -1,15 +1,16 @@
 [
     {
+        "race_id":"20221029",
         "title": "11/XX 競馬予想",
-        "date" : "2020/10/01",
+        "description" : "YY/MMの競馬予想",
         "updatedAt" : "yyyy/mm/dd",
-        "body" : "おめおめ"
+        "body" : "<table class='predict'><thead><tr><th>Productname</th><th>Color</th><th>Category</th><th>Price</th></tr></thead><tbody><tr><td>TheSlidingMr.Bones)</td><td>MalcolmLockyer</td><td>1961</td><td>1,000</td></tr><tr><td>TheSlidingMr.Bones(Ne)</td><td>MalcolmLockyer</td><td>1961</td><td>1,000</td></tr></tbody></table>"
     },
     {
-        "title": "11/YY 競馬予想",
-        "date": "2020/10/01",
+        "title": "11/XX 競馬予想",
+        "race_id":"20221021",
+        "description" : "YY/MMの競馬予想",
         "updatedAt" : "yyyy/mm/dd",
-        "body" : "おめおめ2"
-
+        "body" : "おめおめavsvasv"
     }
 ]

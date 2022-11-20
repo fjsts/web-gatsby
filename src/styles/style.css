@@ -1,18 +1,50 @@
-.message {
-    color: red;
-  }
-
 body {
   background-color: #101010;
-  color: #ffffff;
+  color: #ffffffba;
 }
 
 h1 {
-  color: #ffffff;
+  font-size: 26px;
+  text-align: center;
+  margin: 5px 10px -20px 10px;
 }
-nav a {
-  color: #ffffff;
+
+
+h2 {
+  font-size: 20px;
+  text-align: center;
+  margin: 5px 10px 0px 10px;
 }
-footer {
-  color: #ffffff;
+
+h3 {
+  font-size: 16px;
+  text-align: center;
+  margin: 5px 0px 0px 0px;
+}
+
+li {
+  font-size: 14px;
+  padding: 0.5em 0;
+}
+
+
+
+/* 予測用のテーブル設計 */
+.predict {
+  margin: 15px 0px 15px 0px;
+  padding: 0px 0px 0px 0px;
+  width: 100%;
+  text-align: center;
+}
+
+.predict th {
+  padding: 5px 0px 5px 0px;
+  border-bottom: solid 1px;
+  border-top: solid 1px;
+}
+
+.predict td {
+  padding: 5px 0px 5px 0px;
+  border-bottom: solid 1px;
+  word-break: break-all;
 }

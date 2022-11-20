@@ -2,10 +2,10 @@ import React from "react"
 import "../styles/post-link.css"
 import { Link } from "gatsby"
 
+
 export default function PostLink({ post }) {
     const { title } = post;
-    const pageLink = `/post/${post.id}/`
-
+    const pageLink = `/past_forecasts/${post.race_id}/`
 
     return (
         <Link to={pageLink} className="post-link-anchor">
