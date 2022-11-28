@@ -2,15 +2,27 @@ const path = require("path")
 exports.createPages = async ({ graphql, actions, reporter }) => {
     const { createPage } = actions
 
+    function formatDate(dt) {
+        dt = new Date(dt)
+        var y = dt.getFullYear();
+        var m = ('00' + (dt.getMonth() + 1)).slice(-2);
+        var d = ('00' + dt.getDate()).slice(-2);
+        return (y + '-' + m + '-' + d);
+    }
+
+
+    const today = formatDate(new Date());
     const result = await graphql(
         `
         {
-            allPageInfoJson {
+            allTodayRaceInfoCsv {
                 edges {
                     node {
+                        date
+                        RaceData01_time
+                        area
                         race_id
-                        title
-                        body
+                        race_no
                     }
                 }
             }
@@ -23,13 +35,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         return
     }
 
-    const { edges } = result.data.allPageInfoJson
-
-    edges.forEach(edge => {
-        createPage({
-            path: `/past_forecasts/${edge.node.race_id}/`,
-            component: path.resolve("./src/templates/post.js"),
-            context: { post: edge.node }
-        })
+    result.data.allTodayRaceInfoCsv.edges.forEach(edge => {
+        if (today === edge.node.date){
+            createPage({
+                path: `/today_predict/${edge.node.race_id}/`,
+                component: path.resolve("./src/templates/race_predict.js"),
+                context: { post: edge.node }
+            })
+        }
     });
+
 }

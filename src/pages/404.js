@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
-import LOGO_IMG from "../../static/404.png"
 import "../styles/404.css"
 
 export default function NotFound() {

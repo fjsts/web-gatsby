@@ -11,17 +11,18 @@ module.exports = {
 
 
   siteMetadata: {
-    title: "データサイエンティストの人工知能（AI）競馬予想",
-    // description: "過去10年間の走破データを解析し独自のアルゴリズムで作成した完全無料/毎日更新の人工知能（AI）競馬予想です。本サイトでは中央競馬/地方競馬のレース別入賞期待値を掲載しています。日付やレース会場を画面上で選択することで見たい予想をわかりやすく表示できるよう工夫しています。データ収集やモデル作成にはPythonを用いてます。",
-    // author: {
-    //   name: `書いてる人の名前`,
-    //   summary: `どんな人？`,
-    // },
-    siteUrl: `https://fjsts.github.io/web-gatsby/`,
-    icon: `${__dirname}/static/icon.svg`
+    siteName: "データサイエンティストの人工知能（AI）競馬予想",
+    siteSubTitle: "UmaumaTist",
+    siteDescription: "過去10年間の走破データを解析し独自のアルゴリズムで作成した完全無料/毎日更新の人工知能（AI）競馬予想です。主なアルゴリズムはLightGBMを使用し入賞期待値は複数の予想モデルの総合スコアで算出しています。 サイトジェネレーターにはGatsby、解析にはPythonを用いています。",
+    siteUrl: "https://fjs-fire.com",
+    siteImage: `/icon.svg`,
+    siteOgpImage: `/icon.png`,
+    siteAuthor: "@ai_dark_horses",
 
   },
-  pathPrefix: "/web-gatsby",
+
+  // pathPrefix: "/web-gatsby", ドメインなしの場合必要
+
   plugins: [
     "gatsby-transformer-json",
     "gatsby-transformer-csv",
@@ -42,25 +43,38 @@ module.exports = {
       },
     },
 
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: `Ai Dark Horse`,
-    //     start_url: `/`,
-    //     display: `minimal-ui`, //↓詳細は下。
-    //     icon: `${__dirname}/static/icon.svg`,
-    //     icon_options: {
-    //       purpose: `any maskable`,
-    //     },
-    //     icons: [ //↓詳細は下
-    //       {
-    //         src: `${__dirname}/static/icon.svg`,
-    //         type: `image/svg+xml`,
-    //       }
-    //     ]
-    //   }
-    // },
-    // `gatsby-plugin-offline` //これ。gatsby-plugin-manifestのあとに書く。
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "データサイエンティストの人工知能（AI）競馬予想",
+        short_name: "UmaumaTist",
+        start_url: `/`,
+        display: `minimal-ui`, //↓詳細は下。
+        icon: `${__dirname}/static/icon.svg`,
+        background_color: "#101010",
+        theme_color: "#ffffffba",
+
+      }
+    },
+    `gatsby-plugin-offline`,
+
+
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ["G-09YQ0TXZFD"],  // 控えておいた、測定IDを記載します。
+        pluginConfig: {
+          head: true  // headタグに記載されるようにコンフィグを設定します。
+        }
+      }
+    },
+
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://fjs-fire.com`,
+      },
+    },
 
   ],
 }
