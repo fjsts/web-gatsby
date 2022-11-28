@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkweb_gatsby=self.webpackChunkweb_gatsby||[]).push([[883],{429:function(e,t,n){n.r(t),n.d(t,{default:function(){return r}});var u=n(7294),a=n(1883),l=n(8972);function r(){return u.createElement(l.Z,null,u.createElement("div",{className:"not-found-message"},u.createElement("h1",null,"404 Not Found"),u.createElement(a.rU,{to:"/"},"トップページへ")))}}}]);
-//# sourceMappingURL=component---src-pages-404-js-787ae2cbcad192af21a6.js.map

@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkweb_gatsby=self.webpackChunkweb_gatsby||[]).push([[682],{5465:function(a,e,n){n.r(e),n.d(e,{default:function(){return l}});var t=n(7294),u=n(8972);function l(){return t.createElement(u.Z,null,t.createElement("main",null,t.createElement("h2",null,"自己紹介"),"aaaaaaaaaaaa"))}}}]);
-//# sourceMappingURL=component---src-pages-about-js-e401ae26b0e943b2a1ea.js.map
