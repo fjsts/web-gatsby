@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://fjs-fire.com/web-gatsby/sitemap-index.xml
+Sitemap: https://fjs-fire.com/sitemap-index.xml
 Host: https://fjs-fire.com
