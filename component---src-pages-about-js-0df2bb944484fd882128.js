@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkweb_gatsby=self.webpackChunkweb_gatsby||[]).push([[682],{5465:function(e,n,t){t.r(n),t.d(n,{default:function(){return a}});var u=t(7294),l=t(1079);function a(){return u.createElement(l.Z,null,u.createElement("main",null,u.createElement("h2",null,"自己紹介"),"元ITエンジニアのデータサイエンティスト。"))}}}]);
-//# sourceMappingURL=component---src-pages-about-js-0df2bb944484fd882128.js.map

@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkweb_gatsby=self.webpackChunkweb_gatsby||[]).push([[883],{429:function(e,t,n){n.r(t),n.d(t,{default:function(){return c}});var a=n(7294),l=n(1883),u=n(1079);function c(){return a.createElement(u.Z,null,a.createElement("p",{className:"not-found-top"},"SORRY, PAGE NOT FOUND"),a.createElement("div",{className:"not-found-message"},a.createElement("p",null,a.createElement(l.Link,{to:"/"},"🐴トップページへ🐴"))))}}}]);
-//# sourceMappingURL=component---src-pages-404-js-2ec928c1f20122dae771.js.map
