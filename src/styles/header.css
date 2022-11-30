@@ -1,19 +1,22 @@
 header {
     text-align: center;
     font-size: 40px;
-    background-color: #101010;
     position: fixed;
     width: 100%;
     padding: 0 0 15px 0 ;
-}
+
+    background-color: rgb(47, 23, 4);
+  }
 
 .kakugen{
   font-size: 16px;
-  background:linear-gradient(transparent 80%, rgb(233, 112, 20) 95%);
+  background:linear-gradient(transparent 90%, rgb(221, 153, 100) 95%);
 }
 
 .header-logo{
-  margin: 15px 0 0 0 ;
+  margin: 12px 0 0 0 ;
+  font-size: 42px;
+  font-weight:bold;
 }
 
 /* バーガーメニュー用 */
@@ -27,7 +30,7 @@ header {
   
   /* Color/shape of burger icon bars */
   .bm-burger-bars {
-    background: #373a47;
+    background: #ffffffdc;
   }
   
   /* Color/shape of burger icon bars on hover*/

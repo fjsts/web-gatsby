@@ -11,8 +11,8 @@ module.exports = {
 
 
   siteMetadata: {
-    siteName: "データサイエンティストの人工知能（AI）競馬予想",
-    siteSubTitle: "UmaumaTist",
+    siteName: `データサイエンティストの人工知能(AI)競馬予想`,
+    siteSubTitle: "U M U M T",
     siteDescription: "過去10年間の走破データを解析し独自のアルゴリズムで作成した完全無料/毎日更新の人工知能（AI）競馬予想です。主なアルゴリズムはLightGBMを使用し入賞期待値は複数の予想モデルの総合スコアで算出しています。 サイトジェネレーターにはGatsby、解析にはPythonを用いています。",
     siteUrl: "https://fjs-fire.com",
     siteImage: `/icon.svg`,
