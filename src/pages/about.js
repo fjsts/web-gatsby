@@ -10,11 +10,7 @@ export default function About() {
                 <ul>
                     <li>
                         昭和生まれの元ITエンジニア兼データサイエンティスト。
-                    </li>
-                    <li>
                         好きな食べ物はカレーライス。
-                    </li>
-                    <li>
                         趣味は料理とキャンプ。
                     </li>
                 </ul>
