@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkweb_gatsby=self.webpackChunkweb_gatsby||[]).push([[682],{5465:function(e,n,l){l.r(n),l.d(n,{default:function(){return a}});var t=l(7294),u=l(1629);function a(){return t.createElement(u.Z,null,t.createElement("main",null,t.createElement("h2",null,"作者について"),t.createElement("ul",null,t.createElement("li",null,"昭和生まれの元ITエンジニア兼データサイエンティスト。 好きな食べ物はカレーライス。 趣味は料理とキャンプ。"))))}}}]);
-//# sourceMappingURL=component---src-pages-about-js-ed598cf868ca57f0e93f.js.map

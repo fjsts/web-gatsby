@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkweb_gatsby=self.webpackChunkweb_gatsby||[]).push([[60],{8914:function(e,n,t){t.r(n),t.d(n,{default:function(){return s}});var a=t(7294),l=t(1629);function s(e){let{data:n}=e;return a.createElement(l.Z,null,a.createElement("h1",null,"データの取得"),a.createElement("pre",null,a.createElement("code",{className:"language-python"},u)))}const u="\nimport pandas as pd\nimport numpy as np\n\nclass sample(){\n    pass\n}\n\n"}}]);
+//# sourceMappingURL=component---src-pages-predict-info-js-e026deae6aad73dd8e90.js.map
