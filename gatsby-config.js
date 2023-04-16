@@ -24,15 +24,35 @@ module.exports = {
   // pathPrefix: "/web-gatsby", ドメインなしの場合必要
 
   plugins: [
-    "gatsby-transformer-json",
-    "gatsby-transformer-csv",
+    // "gatsby-transformer-json",
     `gatsby-plugin-robots-txt`,
+
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          {
+            resolve: 'gatsby-remark-prismjs-title',
+            options: {
+              className: 'your-custom-class-name'
+            }
+          } // 重要: コードブロックを使用する他のプラグインより前に定義する必要があります。
+        ]
+      }
+    },
 
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "data",
         path: `${__dirname}/src/data/`,
+      },
+    },
+
+    {
+      resolve: `gatsby-transformer-csv`,
+      options: {
+        noheader: false,
       },
     },
 
