@@ -3,7 +3,7 @@ header {
     font-size: 40px;
     position: fixed;
     width: 100%;
-    padding: 0 0 15px 0 ;
+    padding: 0 0 0px 0 ;
 
     background-color: rgb(47, 23, 4);
   }
@@ -14,7 +14,7 @@ header {
 }
 
 .header-logo{
-  margin: 12px 0 0 0 ;
+  margin: 10px 0 0 0 ;
   font-size: 42px;
   font-weight:bold;
 }

@@ -3,59 +3,42 @@ import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import "../styles/today_predict_forcus.css"
 
-
 export default function Home({ data }) {
   return (
     <Layout>
       {/* <SEO title="title" description="description" /> */}
 
-
+      {ad()}
       <h2>本日の狙い目</h2>
-
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <a href="https://px.a8.net/svt/ejp?a8mat=3NN3IQ+BZ1UR6+1JS2+6CP0X" rel="nofollow">
-          <img
-            border="0"
-            width="468"
-            height="60"
-            alt=""
-            src="https://www22.a8.net/svt/bgt?aid=221107346724&amp;wid=001&amp;eno=01&amp;mid=s00000007229001067000&amp;mc=1"
-            style={{ margin: 'auto' }}
-          />
-          <img 
-          border="0" 
-          width="1" 
-          height="1" 
-          src="https://www13.a8.net/0.gif?a8mat=3NN3IQ+BZ1UR6+1JS2+6CP0X" alt="" 
-          />
-        </a>
-      </div>
-
       <p className="center_region">中央競馬</p>
       {getRaceData(data.allTodayPredictCsv, 'center')}
-
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <a href="https://px.a8.net/svt/ejp?a8mat=3NN3IQ+BK60MQ+19NM+BYLJL" rel="nofollow">
-          <img 
-            border="0"
-            width="234"
-            height="60"
-            alt=""
-            src="https://www26.a8.net/svt/bgt?aid=221107346699&wid=001&eno=01&mid=s00000005917002009000&mc=1"
-            style={{ margin: 'auto' }}
-            />
-          <img 
-            border="0" 
-            width="1"
-            height="1"
-            src="https://www10.a8.net/0.gif?a8mat=3NN3IQ+BK60MQ+19NM+BYLJL" alt=""
-            />
-          </a>
-      </div>
-
       <p className="center_region">地方競馬</p>
       {getRaceData(data.allTodayPredictCsv, 'region')}
-    </Layout>
+      </Layout>
+  )
+}
+
+
+function ad(){
+  return (
+    <div>
+    <a href="https://px.a8.net/svt/ejp?a8mat=3NN3IQ+BZ1UR6+1JS2+6CP0X" rel="nofollow">
+      <img
+        border="0"
+        width="468"
+        height="60"
+        alt=""
+        src="https://www22.a8.net/svt/bgt?aid=221107346724&amp;wid=001&amp;eno=01&amp;mid=s00000007229001067000&amp;mc=1"
+        style={{ margin: 'auto' }}
+      />
+      <img 
+      border="0" 
+      width="1" 
+      height="1" 
+      src="https://www13.a8.net/0.gif?a8mat=3NN3IQ+BZ1UR6+1JS2+6CP0X" alt="" 
+      />
+    </a>
+  </div>
   )
 }
 
