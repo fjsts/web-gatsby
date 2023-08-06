@@ -1,51 +1,85 @@
-import * as React from "react"
+import React, { useState, useEffect } from 'react';
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import "../styles/today_predict_forcus.css"
+import { useBreakpoint } from "gatsby-plugin-breakpoints"
+import Ad from "../components/ad"
+import Seo from "../components/seo"
+
 
 export default function Home({ data }) {
+
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const url = "https://widget-view.dmm.co.jp/js/banner_placement.js?affiliate_id=fjs-001&banner_id=927_468_60"
+
+  useEffect(() => {
+    if (isFirstLoad) {
+      // 初回のロード時の処理をここに記述します
+      const script = document.createElement('script');
+      script.src = url
+      script.async = true;
+      document.body.appendChild(script);
+
+      // 初回のロードが完了したので、isFirstLoadをfalseに設定する
+      setIsFirstLoad(false);
+    }
+  }, [isFirstLoad]);
+
+
+  const breakpoints = useBreakpoint();
+
+
   return (
     <Layout>
-      {/* <SEO title="title" description="description" /> */}
+      <Seo pageTitle="本日の狙い目"/>
 
-      {ad()}
-      <h2>本日の狙い目</h2>
-      <p className="center_region">中央競馬</p>
-      {getRaceData(data.allTodayPredictCsv, 'center')}
-      <p className="center_region">地方競馬</p>
-      {getRaceData(data.allTodayPredictCsv, 'region')}
-      </Layout>
+      {breakpoints.mobile ? 
+      <div className="mobile-content-center">
+        <h1 className="mobile-title">本日の狙い目</h1>
+        <h2 className="mobile-content">中央競馬</h2>
+        {getRaceData(data.allTodayPredictCsv, 'center', false)}
+        <h2 className="mobile-content">地方競馬</h2>
+        {getRaceData(data.allTodayPredictCsv, 'region', false)}
+      </div>
+        : null}
+
+      {breakpoints.pc ? 
+      <div className="pc-content-center">
+        <h1 className="pc-title">本日の狙い目</h1>
+        <h2 className="pc-content">中央競馬</h2>
+        {getRaceData(data.allTodayPredictCsv, 'center', true)}
+        <h2 className="pc-content">地方競馬</h2>
+        {getRaceData(data.allTodayPredictCsv, 'region', true)}
+      </div>
+      : null}
+
+
+      <div>
+          <ins className='dmm-ad'></ins>
+          <script className="widget-banner-script" src="https://widget-view.dmm.co.jp/js/banner_placement.js?affiliate_id=fjs-001&banner_id=927_468_60" ></script>  
+      </div>
+
+      <br/>
+      
+      <Ad/>
+
+
+
+    </Layout>
+
   )
 }
 
 
-function ad(){
-  return (
-    <div>
-    <a href="https://px.a8.net/svt/ejp?a8mat=3NN3IQ+BZ1UR6+1JS2+6CP0X" rel="nofollow">
-      <img
-        border="0"
-        width="468"
-        height="60"
-        alt=""
-        src="https://www22.a8.net/svt/bgt?aid=221107346724&amp;wid=001&amp;eno=01&amp;mid=s00000007229001067000&amp;mc=1"
-        style={{ margin: 'auto' }}
-      />
-      <img 
-      border="0" 
-      width="1" 
-      height="1" 
-      src="https://www13.a8.net/0.gif?a8mat=3NN3IQ+BZ1UR6+1JS2+6CP0X" alt="" 
-      />
-    </a>
-  </div>
-  )
-}
 
 
-function getRaceData(data, division) {
+
+
+
+function getRaceData(data, division, is_pc) {
   let ret = [];
   let count = 0;
+  let table_class = ""
 
   function formatDate(dt) {
     dt = new Date(dt)
@@ -56,6 +90,12 @@ function getRaceData(data, division) {
   }
 
   const today = formatDate(new Date());
+
+  if (is_pc){
+    table_class = "predict-pc"
+  }else{
+    table_class = "predict-mobile"
+  }
 
 
   data.edges.forEach(function (item) {
@@ -79,7 +119,7 @@ function getRaceData(data, division) {
     ret = <p align="center">該当のレースがありません。</p>
   } else {
     ret = (
-      <table className="predict">
+      <table className={table_class}>
         <thead>
           <tr>
             <th>レース</th>

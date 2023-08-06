@@ -7,6 +7,13 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+
+
+const breakPoints = {
+  mobile: "(max-width: 1023px)",
+  pc: "(min-width: 1024px)",
+}
+
 module.exports = {
 
 
@@ -26,28 +33,34 @@ module.exports = {
   plugins: [
     // "gatsby-transformer-json",
     `gatsby-plugin-robots-txt`,
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-fix-fouc`,
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "data",
+        path: `${__dirname}/src/`,
+      },
+    },
 
     {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           {
-            resolve: 'gatsby-remark-prismjs-title',
-            options: {
-              className: 'your-custom-class-name'
+            resolve: 'gatsby-remark-prismjs',
+            options:{
+              classPrefix: "language-",
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: true,
+              noInlineHighlight: false,
             }
-          } // 重要: コードブロックを使用する他のプラグインより前に定義する必要があります。
+          }
         ]
       }
     },
 
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "data",
-        path: `${__dirname}/src/data/`,
-      },
-    },
 
     {
       resolve: `gatsby-transformer-csv`,
@@ -95,6 +108,22 @@ module.exports = {
         siteUrl: `https://fjs-fire.com`,
       },
     },
+
+    // レスポンシブデザイン 
+    { 
+      resolve: 'gatsby-plugin-breakpoints',
+      options: {
+      queries: breakPoints,
+      },
+    },
+
+    // // iframe
+    // {
+    //   resolve: `gatsby-transformer-remark`,
+    //   options: {
+    //     plugins: [`gatsby-remark-responsive-iframe`],
+    //   },
+    // },
 
   ],
 }

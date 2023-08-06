@@ -7,7 +7,7 @@ import Ad from "../components/ad"
 import Seo from "../components/seo"
 
 
-export default function Predict({data}) {
+export default function PastPredict({data}) {
   const breakpoints = useBreakpoint();
 
   function formatDate(dt) {
@@ -30,16 +30,13 @@ export default function Predict({data}) {
 
   return (
     <Layout>
-      <Seo pageTitle="本日の予想"/>
-
-
           {breakpoints.mobile ? 
           <div className="mobile-content-center">
-            <h1 className="mobile-title">本日の予想</h1>
+            <h1 className="mobile-title">これまでの予想</h1>
           </div> : null}
           {breakpoints.pc ? 
           <div className="pc-content-center">
-            <h1 className="pc-title">本日の予想</h1>
+            <h1 className="pc-title">これまでの予想</h1>
           </div> : null}
 
         {data.allTodayRaceInfoCsv.edges.map(edge => view_link(edge))}

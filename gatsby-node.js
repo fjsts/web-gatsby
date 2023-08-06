@@ -45,4 +45,35 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
     });
 
+    // markdown
+    const result1 = await graphql(`
+      query {
+        allMarkdownRemark {
+          edges {
+            node {
+              id
+              html
+              frontmatter {
+                slug
+                title
+                date
+              }
+            }
+          }
+        }
+      }
+  `);
+
+  const posts = result1.data.allMarkdownRemark.edges;
+
+  posts.forEach((post) => {
+    createPage({
+      path: `/note/${post.node.frontmatter.title}`,
+      component: path.resolve(`./src/templates/markdown_post.js`),
+      context: {
+        id: post.node.id
+      },
+    });
+  });
+
 }

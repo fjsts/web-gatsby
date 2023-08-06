@@ -28,7 +28,7 @@ const SEO = ({ pageTitle, pageDescription, imgPath, topPage }) => {
       };
 
     return (
-        <Helmet>
+      <Helmet>
         <html lang="ja-JP" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
         <meta name="robots" content="all"/>

@@ -1,17 +1,33 @@
 import React from "react"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
-import "../styles/404.css"
+import { useBreakpoint } from "gatsby-plugin-breakpoints"
+import Seo from "../components/seo"
 
 export default function NotFound() {
+    const breakpoints = useBreakpoint();
+
     return (
         <Layout>
-            {/* <img src={LOGO_IMG} className="not-found-image" alt="404sorry"></img> */}
-            <p className="not-found-top">SORRY, PAGE NOT FOUND</p>
+            <Seo pageTitle="404"/>
 
-            <div className="not-found-message">
-                <p><Link to="/">🐴トップページへ🐴</Link></p>
+            {breakpoints.mobile ? 
+            <div> 
+                <h1 className='mobile-title'>SORRY, PAGE NOT FOUND</h1>
+                <Link to="/">
+                <p className='mobile-content-center'>🐴トップページへ🐴</p>
+                </Link>
             </div>
+                : null}
+            {breakpoints.pc ? 
+            <div> 
+                <h1 className='pc-title'>SORRY, PAGE NOT FOUND</h1>
+                <Link to="/">
+                <p className='pc-content-center'>🐴トップページへ🐴</p>
+                </Link>
+            </div>
+            : null}
+
         </Layout>
     )
 }

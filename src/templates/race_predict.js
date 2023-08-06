@@ -3,9 +3,13 @@ import "../styles/race_predict.css"
 import Layout from "../components/layout";
 import { Link } from "gatsby"
 import { graphql } from "gatsby"
+import { useBreakpoint } from "gatsby-plugin-breakpoints"
+import Ad from "../components/ad";
 
 
 export default function Post({ pageContext, data}) {
+    const breakpoints = useBreakpoint();
+    
     const area = pageContext.post.area;
     const race_info = pageContext.post.race_no + 'R ' + pageContext.post.RaceData01_time;    
     const race_id = pageContext.post.race_id;
@@ -13,38 +17,40 @@ export default function Post({ pageContext, data}) {
     return (
         <Layout>            
 
-            <h2>{area} {race_info}</h2>
+          {breakpoints.mobile ? 
+          <div className='mobile-content-center'> 
+            <h1 className="mobile-title">本日の予想</h1>
+            <h2 className="mobile-content">{area} {race_info}</h2>
+              <Ad/><br/>
+            {getRaceData(data.allTodayPredictCsv, race_id, false)}
+            <Link to="/today_predict"><span className="mobile-content-center">← 戻る</span></Link>
+          <Ad/>
+          </div>
+            : null}
+          
+          {breakpoints.pc ? 
+          <div className='pc-content-center'> 
+            <h1 className="pc-title">本日の予想</h1>
+            <h2 className="pc-content">{area} {race_info}</h2>
+            <Ad/><br/>
 
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <a href="https://px.a8.net/svt/ejp?a8mat=3NN3IQ+BZ1UR6+1JS2+6CP0X" rel="nofollow">
-                <img
-                  border="0"
-                  width="468"
-                  height="60"
-                  alt=""
-                  src="https://www22.a8.net/svt/bgt?aid=221107346724&amp;wid=001&amp;eno=01&amp;mid=s00000007229001067000&amp;mc=1"
-                  style={{ margin: 'auto' }}
-                />
-                <img 
-                border="0" 
-                width="1" 
-                height="1" 
-                src="https://www13.a8.net/0.gif?a8mat=3NN3IQ+BZ1UR6+1JS2+6CP0X" alt="" 
-                />
-              </a>
-            </div>
-
-            {getRaceData(data.allTodayPredictCsv, race_id)}
-            <Link to="/today_predict"><span className="btn-return">← 戻る</span></Link>
+            {getRaceData(data.allTodayPredictCsv, race_id, true)}
+            <Link to="/today_predict"><span className="pc-content-center">← 戻る</span></Link>
+            <Ad/>
+          </div>
+            : null}
+          
         </Layout>
     )
 }
 
 
-function getRaceData(data, race_id) {
+
+function getRaceData(data, race_id, is_pc) {
     let ret = [];
     let count = 0;
     let pred_value = 0
+    let table_class = ""
   
     data.edges.forEach(function (item) {
         if (item.node.race_id === race_id) {
@@ -59,12 +65,18 @@ function getRaceData(data, race_id) {
             )
         }
     })
+
+    if (is_pc){
+      table_class = "predict-pc"
+    }else{
+      table_class = "predict-mobile"
+    }
   
     if (count === 0) {
       ret = <p align="center">データがありません</p>
     } else {
       ret = (
-        <table className="predict">
+        <table className={table_class}>
           <thead>
             <tr>
               <th>馬番</th>

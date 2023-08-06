@@ -1,26 +1,29 @@
 import * as React from "react"
 import Layout from "../components/layout"
+import { useBreakpoint } from "gatsby-plugin-breakpoints"
+import ContentAbout from "../components/content_about"
+import Seo from "../components/seo"
 
 
 export default function About() {
+  const breakpoints = useBreakpoint();
+
     return (
         <Layout>
-            <main>
-                <h2>作者について</h2>
-                <ul>
-                    <li>
-                        昭和生まれの元ITエンジニア兼データサイエンティストのフジソルと申します。私はIT業界に携わり、データサイエンティストとしても従事してきましたが、競馬に興味を持ち、競馬予想に特化したサイトの作成に携わっています。
-                    </li>
+            <Seo pageTitle="作者について"/>
 
-                    <li>
-                        趣味は旅行やアウトドアスポーツで、中でもキャンプが大好きです。キャンプに出かけると、日常生活では感じられない自然の美しさや静寂を堪能することができ、ストレスが発散されます。また、野外での料理や仲間との交流も楽しい時間です。キャンプ道具の購入や手作りも楽しみの一つで、最近はDIYで木製のキャンプテーブルを作成したりしています。キャンプに限らず、アウトドアスポーツ全般に興味があり、新しい場所やアクティビティを探すことが好きです。
-                    </li>
-
-                    <li>
-                        競馬予想サイトの開発を通じて新しい技術や知見を身につけることができると同時に、キャンプや旅行などの趣味を通じてストレスを発散し、心身ともにリフレッシュすることができています。今後も、自己研鑽を続けつつ、多様な経験を積んで、より良い人生を送るために努力していきたいと思っています。ご覧いただきありがとうございました。
-                    </li>
-                </ul>
-            </main>
+            {breakpoints.mobile ? 
+            <div className='mobile-content'> 
+                <h1 className='mobile-title'>作者について</h1>
+                <ContentAbout/>
+            </div>
+                : null}
+            {breakpoints.pc ? 
+            <div className='pc-content'> 
+                <h1 className='pc-title'>作者について</h1>
+                <ContentAbout />
+            </div>
+            : null}
         </Layout>
     )
 }
