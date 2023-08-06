@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkweb_gatsby=self.webpackChunkweb_gatsby||[]).push([[60],{8914:function(e,a,t){t.r(a);var n=t(7294),l=t(1629);t(1883);a.default=e=>{let{data:a}=e;return n.createElement(l.Z,null,a.allMarkdownRemark.edges.map((e=>n.createElement("div",{key:e.node.id},n.createElement("div",{className:"markdown-css",dangerouslySetInnerHTML:{__html:e.node.html}})))))}}}]);
-//# sourceMappingURL=component---src-pages-predict-info-js-c8f7258b6806caefb68e.js.map
