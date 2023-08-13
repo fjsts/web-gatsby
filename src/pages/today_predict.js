@@ -2,13 +2,11 @@ import * as React from "react"
 import Layout from "../components/layout"
 import RaceList from "../components/race_list"
 import { graphql } from "gatsby"
-import { useBreakpoint } from "gatsby-plugin-breakpoints"
 import Ad from "../components/ad"
 import Seo from "../components/seo"
 
 
 export default function Predict({data}) {
-  const breakpoints = useBreakpoint();
 
   function formatDate(dt) {
     dt = new Date(dt)
@@ -33,17 +31,9 @@ export default function Predict({data}) {
       <Seo pageTitle="本日の予想"/>
 
 
-          {breakpoints.mobile ? 
-          <div className="mobile-content-center">
-            <h1 className="mobile-title">本日の予想</h1>
-          </div> : null}
-          {breakpoints.pc ? 
-          <div className="pc-content-center">
-            <h1 className="pc-title">本日の予想</h1>
-          </div> : null}
-
-        {data.allTodayRaceInfoCsv.edges.map(edge => view_link(edge))}
-        <Ad/>
+      <h1>本日の予想</h1>
+      {data.allTodayRaceInfoCsv.edges.map(edge => view_link(edge))}
+      <Ad/>
 
     </Layout>
   )

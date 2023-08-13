@@ -4,7 +4,6 @@ export default function Ad() {
 
     // const now = new Date().getTime();
     const judge =  Math.floor( Math.random() * 10 );
-    console.log(judge)
 
     // if (judge === 0){
     //     return (

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
-import "../styles/today_predict_forcus.css"
-import { useBreakpoint } from "gatsby-plugin-breakpoints"
 import Ad from "../components/ad"
 import Seo from "../components/seo"
 
@@ -26,40 +24,28 @@ export default function Home({ data }) {
   }, [isFirstLoad]);
 
 
-  const breakpoints = useBreakpoint();
-
-
   return (
     <Layout>
       <Seo pageTitle="本日の狙い目"/>
 
-      {breakpoints.mobile ? 
-      <div className="mobile-content-center">
-        <h1 className="mobile-title">本日の狙い目</h1>
-        <h2 className="mobile-content">中央競馬</h2>
-        {getRaceData(data.allTodayPredictCsv, 'center', false)}
-        <h2 className="mobile-content">地方競馬</h2>
-        {getRaceData(data.allTodayPredictCsv, 'region', false)}
-      </div>
-        : null}
-
-      {breakpoints.pc ? 
-      <div className="pc-content-center">
-        <h1 className="pc-title">本日の狙い目</h1>
-        <h2 className="pc-content">中央競馬</h2>
-        {getRaceData(data.allTodayPredictCsv, 'center', true)}
-        <h2 className="pc-content">地方競馬</h2>
-        {getRaceData(data.allTodayPredictCsv, 'region', true)}
-      </div>
-      : null}
-
+      <h1>本日の狙い目</h1>
 
       <div>
           <ins className='dmm-ad'></ins>
           <script className="widget-banner-script" src="https://widget-view.dmm.co.jp/js/banner_placement.js?affiliate_id=fjs-001&banner_id=927_468_60" ></script>  
       </div>
-
+      
       <br/>
+
+      <h2>中央競馬</h2>
+      {getRaceData(data.allTodayPredictCsv, 'center', false)}
+      <br/><br/>
+
+      <h2>地方競馬</h2>
+      {getRaceData(data.allTodayPredictCsv, 'region', false)}
+
+      <br/><br/>
+
       
       <Ad/>
 
@@ -91,11 +77,11 @@ function getRaceData(data, division, is_pc) {
 
   const today = formatDate(new Date());
 
-  if (is_pc){
-    table_class = "predict-pc"
-  }else{
-    table_class = "predict-mobile"
-  }
+  // if (is_pc){
+  //   table_class = "predict-pc"
+  // }else{
+  //   table_class = "predict-mobile"
+  // }
 
 
   data.edges.forEach(function (item) {
@@ -105,7 +91,7 @@ function getRaceData(data, division, is_pc) {
           count = count + 1
           ret.push(
             <tr key={item.node.id}>
-              <td width="20%" >{item.node.area} {item.node.race_no}R</td>
+              <td width="20%" >{item.node.area}{item.node.race_no}R</td>
               <td width="20%" >{item.node.RaceData01_time.replace("発走", "")}</td>
               <td width="10%" >{item.node.umaban}</td>
               <td width="50%" >{item.node.horse_name}</td>
@@ -119,7 +105,7 @@ function getRaceData(data, division, is_pc) {
     ret = <p align="center">該当のレースがありません。</p>
   } else {
     ret = (
-      <table className={table_class}>
+      <table className="predict-table">
         <thead>
           <tr>
             <th>レース</th>

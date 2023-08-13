@@ -1,56 +1,121 @@
-body {
+
+/* コンテンツのメイン位置調整 */
+.mobile-main{
+  font-size: 12pt;
+  padding: 10rem 3rem 3rem 3rem; 
+  line-height: 1.8em
+}
+
+.pc-main{
+  font-size: 14pt;
+  padding: 12rem 15rem 3rem 15rem; 
+  line-height: 1.8em;
+
+}
+
+
+body{
   background-color: #000000e7;
   color: #ffffffd1;
 }
 
+h1{
+  font-size: 16pt;
+  margin: 1.0em 0 1.0em 0;
+  padding: 0.5em;
+  background: #a9a9a990;
+  border-left: solid 5px rgb(255, 168, 81);
+}
+
+h2{
+  font-size: 16pt;
+  color: #ffffffd1;
+  padding: 1.0em 0;
+  /* border-top: solid 0.5px #ffffffd1; */
+  /* border-bottom: solid 0.5px #ffffffd1; */
+}
+
+
+
+.page-link{
+  color: rgb(255, 168, 81);
+}
+
+/************* ↓↓↓↓Note-List↓↓↓↓ **************/
+.tag-group-block{
+  display: inline-block;
+  margin: 0.5rem;
+  font-size: 14pt;
+  text-align: center;
+  box-shadow: rgb(255, 168, 81) 0px 0px 0px 1px;
+  border-radius: 15px;
+  padding: 0rem 0.5rem 0rem 0.5rem;
+}
+
+
+.note-title{
+  font-size: 16pt;
+}
+
+.note-tag{
+  font-size: 10pt;
+  color: rgb(255, 168, 81);
+}
+
+.note-date{
+  font-size: 10pt;
+  margin: 0rem 0.5rem 0rem 0.5rem;
+  ;
+}
+.note-text{
+  margin: 0.5rem 0 0.5rem 0;
+  font-size: 10pt;
+  line-height: 1.6em
+}
+
+/* padding-left. Did you mean paddingLeft? */
+
+
+/************* ↑↑↑↑Note↑↑↑↑ **************/
+
+
+
+/* 本日の予想一覧 */
+.today-predict-list{
+  margin: 2rem 3rem 2rem 3rem;
+  box-shadow: rgb(255, 168, 81) 0px 0px 7px 1px;
+  border-radius: 15px;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+
 
 /* 予測用のテーブル設計 */
-.predict-mobile {
-  font-size: 16px;
+.predict-table {
   width: 100%;
   margin: auto;
   text-align: center;
 
 }
 
-.predict-mobile th {
+.predict-table th {
   padding: 5px 0px 5px 0px;
   border-bottom: solid 1px;
   border-top: solid 1px;
   text-align: center;
+  white-space: nowrap;
 
 }
 
-.predict-mobile td {
+.predict-table td {
   padding: 5px 0px 5px 0px;
   border-bottom: solid 1px;
   word-break: break-all;
   text-align: center;
-
+  white-space: nowrap;
 }
 
-
-/* 予測用のテーブル設計 */
-.predict-pc {
-  font-size: 18px;
-  width: 70%;
-  margin: auto;
-
-}
-
-.predict-pc th {
-  padding: 5px 0px 5px 0px;
-  border-bottom: solid 1px;
-  border-top: solid 1px;
-
-}
-
-.predict-pc td {
-  padding: 5px 0px 5px 0px;
-  border-bottom: solid 1px;
-  word-break: break-all;
-
-}
 
 
 
@@ -163,51 +228,20 @@ body {
   line-height: 1.8em
 }
 
-/* 本日の予想 */
-.today-predict-list-mobile {
-  font-size: 16px;
-  margin: 30px 30px 30px 30px;
-  box-shadow: rgb(223, 151, 97) 0px 0px 5px 1px;
-  border-radius: 15px;
-  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-  text-align: center;
-}
 
-.today-predict-list-pc {
-  font-size: 20px;
-  margin: 30px 200px 30px 200px;
-  box-shadow: rgb(223, 151, 97) 0px 0px 5px 1px;
-  border-radius: 15px;
-  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-  text-align: center;
-}
+
+
 
 .btn-return{
   margin-left: auto;
   margin-right: auto;
 }
 
-/* markdown */
-h2{
-  font-size: 18px;
-  text-align: center;
-}
 
-/* 本日の予想 */
-.blog-list-mobile {
-  font-size: 16px;
-  margin: 30px 30px 30px 30px;
-  box-shadow: rgb(223, 151, 97) 0px 0px 5px 1px;
-  border-radius: 15px;
-  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-  text-align: center;
-}
 
-.blog-list-pc {
-  font-size: 20px;
-  margin: 30px 200px 30px 200px;
-  box-shadow: rgb(223, 151, 97) 0px 0px 5px 1px;
-  border-radius: 15px;
-  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-  text-align: center;
+
+
+/* center_region */
+.center_region{
+  padding: 20px 0px 0px 0px; 
 }

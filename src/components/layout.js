@@ -1,13 +1,20 @@
 import React from "react"
-import "../styles/layout.css"
 import Header from "./header"
 import Footer from "./footer"
+import { useBreakpoint } from "gatsby-plugin-breakpoints"
 
 const Layout = ({ children }) => {
+    const breakpoints = useBreakpoint();
+
     return (
         <div>
             <Header />
-            <main className="main">{children}</main>
+
+            {breakpoints.mobile ? 
+            <main className="mobile-main">{children}</main> : null}
+            {breakpoints.pc ? 
+            <main className="pc-main">{children}</main>: null}
+
             <Footer />
         </div>
     )

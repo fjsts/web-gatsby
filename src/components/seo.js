@@ -19,7 +19,8 @@ const SEO = ({ pageTitle, pageDescription, imgPath, topPage }) => {
     } = site.siteMetadata;
 
     const seo = {
-        title: pageTitle ? `${pageTitle} | ${siteName}` : `${siteName} | ${siteSubTitle}`,
+        // title: pageTitle ? `${pageTitle} | ${siteName}` : `${siteName} | ${siteSubTitle}`,
+        title: pageTitle ? `${pageTitle} | ${siteSubTitle}` : `${siteName} | ${siteSubTitle}`,
         description: pageDescription || siteDescription,
         image: `${siteUrl}${imgPath || siteImage}`,
         ogpImage: `${siteUrl}${imgPath || siteOgpImage}`,

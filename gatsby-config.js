@@ -32,6 +32,7 @@ module.exports = {
 
   plugins: [
     // "gatsby-transformer-json",
+    'gatsby-plugin-postcss',
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-fix-fouc`,

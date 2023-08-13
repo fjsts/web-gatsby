@@ -1,9 +1,7 @@
 import * as React from "react"
 import { Link } from "gatsby"
-import "../styles/index.css"
 
-
-export default function data({ data }) {
+export default function Home() {
     return (
         <div>
             当サイトは、人工知能（AI）を使用した競馬予想を完全無料で毎日更新しています。
@@ -35,6 +33,7 @@ export default function data({ data }) {
             
             最後に、当サイトは完全無料でご利用いただけますので、是非一度お試しください。皆様の競馬予想に役立てることができれば幸いです。                    
 
+            <br/><br/>
         </div>
     )
 }

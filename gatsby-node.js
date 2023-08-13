@@ -1,4 +1,5 @@
 const path = require("path")
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
     const { createPage } = actions
 
@@ -30,6 +31,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         `
     )
 
+    const past_result = await graphql(
+      `
+      {
+          allPastRaceInfoCsv {
+              edges {
+                  node {
+                      date
+                      RaceData01_time
+                      area
+                      race_id
+                      race_no
+                  }
+              }
+          }
+      }
+      `
+  )
+
+
     if (result.errors) {
         reporter.panicOnBuild(`Error while running GraphQL query.`)
         return
@@ -45,35 +65,80 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
     });
 
-    // markdown
-    const result1 = await graphql(`
-      query {
-        allMarkdownRemark {
-          edges {
-            node {
-              id
-              html
-              frontmatter {
-                slug
-                title
-                date
-              }
-            }
+    past_result.data.allPastRaceInfoCsv.edges.forEach(edge => {
+      if (today > edge.node.date){
+          createPage({
+              path: `/past_predict/${edge.node.race_id}/`,
+              component: path.resolve("./src/templates/past_race_predict.js"),
+              context: { post: edge.node }
+          })
+      }
+  });
+
+
+
+  // markdown
+  const MarkdownPostTemplate = path.resolve("src/templates/markdown_post.js")
+  const tagTemplate = path.resolve("src/templates/tags.js")
+  const md_result = await graphql(`
+  {
+    postsRemark: allMarkdownRemark(
+      sort: {frontmatter: {update: ASC}}
+      limit: 2000
+    ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            update
+            created
+            tags
           }
         }
       }
-  `);
+    }
+    tagsGroup: allMarkdownRemark(
+      limit: 2000
+    ) {
+      group(field: { frontmatter: { tags: SELECT }}) {
+        fieldValue
+      }
+    }
+  }
+  `)
 
-  const posts = result1.data.allMarkdownRemark.edges;
+  // handle errors
+  if (md_result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    return
+  }
 
+  const posts = md_result.data.postsRemark.edges
+  // Create post detail pages
   posts.forEach((post) => {
     createPage({
       path: `/note/${post.node.frontmatter.title}`,
-      component: path.resolve(`./src/templates/markdown_post.js`),
+      component: MarkdownPostTemplate,
       context: {
         id: post.node.id
+      }
+    })
+  })
+
+  // Extract tag data from query
+  const tags = md_result.data.tagsGroup.group
+
+  // Make tag pages
+  tags.forEach(tag => {
+    createPage({
+      path: `/note/${tag.fieldValue}/`,
+      component: tagTemplate,
+      context: {
+        tag: tag.fieldValue,
       },
-    });
-  });
+    })
+  })
+
 
 }

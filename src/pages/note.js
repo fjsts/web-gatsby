@@ -1,70 +1,59 @@
 import * as React from 'react';
 import Layout from '../components/layout';
-import { graphql, Link } from 'gatsby';
-import { useBreakpoint } from "gatsby-plugin-breakpoints"
+import TagsGroup from '../components/tags_group';
+import { graphql } from 'gatsby';
 import Seo from "../components/seo"
+import NoteCard from "../components/note_card"
 
-const Blog = ({ data }) => {
-    const breakpoints = useBreakpoint();
-    const edges = data.allMarkdownRemark.edges
+
+const Note = ({ data }) => {
+
+  const postsRemark = data.postsRemark.edges
 
   return (
     <Layout>
         <Seo pageTitle="Note"/>
 
-        {breakpoints.mobile ? 
-            <div>
-                <h1 className="mobile-title">Note</h1>
-                <ul>
-                {edges.map((edge) => (
-                    <li className="blog-list-mobile" key={edge.node.id}>
-                        <Link to={edge.node.frontmatter.title}>
-                        <div>{edge.node.frontmatter.title}</div>
-                        </Link>
-                    </li>
-                ))}
-                </ul>
-            </div>
-        : null}
+        <h1>Note</h1>
 
-        {breakpoints.pc ? 
-            <div>
-                <h1 className="pc-title">Note</h1>
-                <ul >
-                {edges.map((edge) => (
-                    <li className="blog-list-pc" key={edge.node.id}>
-                        <Link to={edge.node.frontmatter.title}>
-                        <div>{edge.node.frontmatter.title}</div>
-                        </Link>
-                    </li>
-                ))}
-                </ul>
+        <TagsGroup/>
+
+        <br/>
+
+        <section>
+          <div className="container mx-auto">
+            <div className="flex flex-wrap -mx-4 -my-8">
+              {postsRemark.map((edge) => (
+                  <NoteCard data={edge.node} key={edge.node.id}/>
+              ))}
             </div>
-        : null}
+          </div>
+        </section>
 
     </Layout>
   );
 };
 
+
+
 export const query = graphql`
   query {
-    allMarkdownRemark
-    (sort: { frontmatter: { title: ASC } })
+    postsRemark: allMarkdownRemark
+    (sort: {frontmatter: {update: DESC}} )
     {
       edges {
         node {
           id
-          html
-          timeToRead
+          rawMarkdownBody
           frontmatter {
             title
-            date
-            slug
+            tags
+            update
           }
-        }
+        }        
       }
     }
   }
 `;
 
-export default Blog;
+export default Note;
