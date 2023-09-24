@@ -2,26 +2,26 @@
 /* コンテンツのメイン位置調整 */
 .mobile-main{
   font-size: 12pt;
-  padding: 10rem 3rem 3rem 3rem; 
+  padding: 1rem 3rem 1rem 3rem; 
   line-height: 1.8em
 }
 
 .pc-main{
   font-size: 14pt;
-  padding: 12rem 15rem 3rem 15rem; 
+  padding: 3rem 15rem 3rem 15rem; 
   line-height: 1.8em;
 
 }
 
 
 body{
-  background-color: #000000e7;
+  background-color: #000000e4;
   color: #ffffffd1;
 }
 
 h1{
   font-size: 16pt;
-  margin: 1.0em 0 1.0em 0;
+  margin: 0em 0 1.0em 0;
   padding: 0.5em;
   background: #a9a9a990;
   border-left: solid 5px rgb(255, 168, 81);
@@ -35,6 +35,11 @@ h2{
   /* border-bottom: solid 0.5px #ffffffd1; */
 }
 
+header {
+  text-align: center;
+  width: 100%;
+  background-color: rgb(47, 23, 4);
+}
 
 
 .page-link{
@@ -65,16 +70,13 @@ h2{
 .note-date{
   font-size: 10pt;
   margin: 0rem 0.5rem 0rem 0.5rem;
-  ;
+  
 }
 .note-text{
   margin: 0.5rem 0 0.5rem 0;
   font-size: 10pt;
   line-height: 1.6em
 }
-
-/* padding-left. Did you mean paddingLeft? */
-
 
 /************* ↑↑↑↑Note↑↑↑↑ **************/
 
@@ -125,7 +127,6 @@ h2{
 /* PC */
 .header-logo-pc{
   font-size: 46px;
-  margin: 10px 0 0 0 ;
   font-weight:bold;
 }
 
@@ -167,12 +168,11 @@ h2{
 
 .header-logo-mobile{
   font-size: 36px;
-  margin: 20px 0 0 0 ;
   font-weight:bold;
 }
 
 .header-title-mobile {
-  font-size: 16px;
+  font-size: 22px;
   text-align: center;
   margin: 0px 20px 0px 20px;
 }
@@ -221,12 +221,6 @@ h2{
   justify-content: center;
 }
 
-
-.markdown-css {
-  font-size: 16px;
-  margin: 20px 10px 10px 10px;
-  line-height: 1.8em
-}
 
 
 

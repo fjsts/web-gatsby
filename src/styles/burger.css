@@ -1,20 +1,10 @@
-header {
-    text-align: center;
-    font-size: 16px;
-    position: fixed;
-    width: 100%;
-    padding: 0 0 5px 0 ;
-
-    background-color: rgb(47, 23, 4);
-  }
-
 /* バーガーメニュー用 */
 .bm-burger-button {
     position: fixed;
-    width: 36px;
-    height: 30px;
-    left: 25px;
-    top: 30px;
+    width: 2rem;
+    height: 2rem;
+    left: 1rem;
+    top: 0.5rem;
   }
   
   /* Color/shape of burger icon bars */

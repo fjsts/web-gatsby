@@ -1,11 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
 // import { useBreakpoint } from "gatsby-plugin-breakpoints"
-import Ad from '../components/ad';
+import GAd from '../components/googleAdsense';
+
 
 export default function RaceList({ post , count}) {
-    // const breakpoints = useBreakpoint();
-    // const count = count
 
     const pageLink = `/today_predict/${post.race_id}/`
     const area = post.area;
@@ -20,13 +19,13 @@ export default function RaceList({ post , count}) {
 
 
     return (
-        <div>
-            {count % 5 === 0 ? <Ad/> : null}
+        <div>           
             <Link to={pageLink}>
                 <div className="today-predict-list">
                     <div>{mark} {area} {race_info} {mark} </div>
                 </div>
             </Link>
+            {count % 5 === 0 ? <GAd/> : null}
         </div>
     )
 }

@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import GAd from '../components/googleAdsense';
 
 
 export const pageQuery = graphql`
@@ -12,6 +13,7 @@ export const pageQuery = graphql`
         title
       }
     }
+
   }
 `
 export default function MarkdownPost({ data }) {
@@ -23,8 +25,9 @@ export default function MarkdownPost({ data }) {
         <Seo pageTitle={`Note | ${title}`}/>
 
         <h1>{title}</h1>
+        <GAd/>
         <div dangerouslySetInnerHTML={{ __html: html }} />
-
+        <GAd/>
     </Layout>
   )
 }

@@ -1,6 +1,7 @@
 const React = require("react")
 const { Helmet } = require("react-helmet")
 
+// Twitter Card用
 exports.onRenderBody = (
   { setHeadComponents, setHtmlAttributes, setBodyAttributes },
   pluginOptions
@@ -22,13 +23,25 @@ exports.onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
   const headComponents = getHeadComponents()
 
   headComponents.sort((x, y) => {
-    if (x.props && x.props["data-react-helmet"]) {
-      return -1
-    } else if (y.props && y.props["data-react-helmet"]) {
-      return 1
-    }
+    // if (x.props && x.props["data-react-helmet"]) {
+    //   return 1
+    // } else if (y.props && y.props["data-react-helmet"]) {
+    //   return -1
+    // }
+
+    // if ((x.type === 'style') || (y.type === 'style')) {      
+    //   if (x.type === 'style') {
+    //     return 1;
+    //   } else if (y.type === 'style') {
+    //     return -1;
+    //   }
+    // }
+
     return 0
   })
 
   replaceHeadComponents(headComponents)
 }
+
+
+

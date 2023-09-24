@@ -4,6 +4,8 @@ import RaceList from "../components/race_list"
 import { graphql } from "gatsby"
 import Seo from "../components/seo"
 import TagsGroupKeiba from "../components/tags_group_keiba"
+import GAd from '../components/googleAdsense';
+
 
 export default function Predict({data}) {
 
@@ -15,11 +17,14 @@ export default function Predict({data}) {
     return (y + '-' + m + '-' + d);
   }
 
+  const today = formatDate(new Date());
   let count = 0
 
   function view_link(edge){
-    count = count + 1
-    return <RaceList key={edge.node.race_id} post={edge.node} count={count}/>
+    if (today === edge.node.date){
+      count = count + 1
+      return <RaceList key={edge.node.race_id} post={edge.node} count={count}/>
+    }
   }
 
   return (
@@ -28,6 +33,7 @@ export default function Predict({data}) {
       <h1>本日の予想</h1>
 
       <TagsGroupKeiba/>
+      <GAd/>
 
       {data.allTodayRaceInfoCsv.edges.map(edge => view_link(edge))}
 
@@ -37,8 +43,11 @@ export default function Predict({data}) {
 
 
 export const query = graphql`
-  query race_info {
-      allTodayRaceInfoCsv{
+  query ($area: String) {
+    allTodayRaceInfoCsv(
+        filter: { area: { in: [$area] } }
+      )
+      {
         edges {
           node {
             division
@@ -51,5 +60,7 @@ export const query = graphql`
           }
         }
       }
+
     }
+  
 `

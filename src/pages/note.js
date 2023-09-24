@@ -4,6 +4,7 @@ import TagsGroup from '../components/tags_group';
 import { graphql } from 'gatsby';
 import Seo from "../components/seo"
 import NoteCard from "../components/note_card"
+import GAd from '../components/googleAdsense';
 
 
 const Note = ({ data }) => {
@@ -18,6 +19,8 @@ const Note = ({ data }) => {
 
         <TagsGroup/>
 
+        <br/>
+        <GAd/>
         <br/>
 
         <section>

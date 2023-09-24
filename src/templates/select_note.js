@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import Seo from "../components/seo"
 import TagsGroup from '../components/tags_group';
 import NoteCard from "../components/note_card"
+import GAd from '../components/googleAdsense';
 
 
 const Tags = ({data}) => {
@@ -17,6 +18,8 @@ const Tags = ({data}) => {
             <h1>Note</h1>
 
             <TagsGroup/>
+
+            <GAd/>
 
             <br/>
 
@@ -55,6 +58,7 @@ export const query = graphql`
       }
     }
   }
+
 `;
 
 

@@ -31,11 +31,11 @@ module.exports = {
   // pathPrefix: "/web-gatsby", ドメインなしの場合必要
 
   plugins: [
-    // "gatsby-transformer-json",
     'gatsby-plugin-postcss',
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-fix-fouc`,
+    `gatsby-plugin-react-helmet`,
+    
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -74,7 +74,18 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         output: `/`, //サイトマップをルートディレクトリ直下に出力するようなオプション
+        excludes: [`/today_predict/*`]
       },
+    },
+
+
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://fjs-fire.com/',
+        sitemap: 'https://fjs-fire.com/sitemap-index.xml',
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
     },
 
     {
@@ -90,7 +101,6 @@ module.exports = {
 
       }
     },
-    `gatsby-plugin-offline`,
 
 
     {
